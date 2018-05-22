@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/19 15:27:50 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/05/22 14:40:39 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/05/22 15:21:43 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <math.h>
 # include <mlx.h>
 # include <pthread.h>
+# include <stdio.h>
 # define STR_P e->mlx_ptr, e->win_ptr
 # define VARI int i; t_inf m; t_env *e;
 
@@ -72,39 +73,41 @@ typedef struct		s_col
 /*
 ** main.c
 */
-int		main(int ac, char **av);
-void	fractol_error(int i);
-void	fractol_type(char *av, t_env *e);
-void	fractol_setup(t_env *e, t_inf *m, int *i);
-int		fractol_color(t_env *e, int i);
+int					main(int ac, char **av);
+void				fractol_error(int i);
+void				fractol_type(char *av, t_env *e);
+void				fractol_setup(t_env *e, t_inf *m, int *i);
+int					fractol_color(t_env *e, int i);
 
 /*
 ** julia.c
 */
-void	*phoenix(void *t);
-void	fractol_draw_phoenix_s(t_env *e, t_inf *m, int *i);
-void	*julia(void *t);
-void	*glynn(void *t);
+void				*phoenix(void *t);
+void				fractol_draw_phoenix_s(t_env *e, t_inf *m, int *i);
+void				*julia(void *t);
+void				*glynn(void *t);
 
 /*
 ** key_mouse.c
 */
-int		fractol_key(int key, t_env *e);
-void	fractol_key_type_color(int key, t_env *e);
-int		fractol_julia_mouse(int x, int y, t_env *e);
-int		fractol_mouse(int mouse, int x, int y, t_env *e);
+int					fractol_key(int key, t_env *e);
+void				fractol_reset(t_env *e);
+void				fractol_key_type_color(int key, t_env *e);
+int					fractol_julia_mouse(int x, int y, t_env *e);
+int					fractol_mouse(int mouse, int x, int y, t_env *e);
 
 /*
 ** functions.c
 */
-void	*fractol_win(void *t);
-void	fractol_draw(t_env *e);
-void	fractol_win_message(t_env *e, int key);
+void				*fractol_win(void *t);
+void				fractol_draw(t_env *e);
+void				fractol_win_message(t_env *e, int key);
+void				fractol_win_message_s(t_env *e);
 
 /*
 ** mandel.c
 */
-void	*burning(void *t);
-void	*tricorn(void *t);
-void	*mandel(void *t);
+void				*burning(void *t);
+void				*tricorn(void *t);
+void				*mandel(void *t);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 14:27:03 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/05/22 14:51:31 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/05/22 15:21:38 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,13 @@ void	fractol_key_type_color(int key, t_env *e)
 
 void	fractol_reset(t_env *e)
 {
-	int		tmp;
-
-	tmp = e->type;
 	e->zoom = 1;
 	e->m_i = 50;
-	move_x = 0;
-	move_y = 0;
+	e->move_x = 0;
+	e->move_y = 0;
 	e->n = 1.1;
+	e->p = 0;
+}
 
 int		fractol_key(int key, t_env *e)
 {
@@ -96,8 +95,8 @@ int		fractol_key(int key, t_env *e)
 	key == 124 ? e->move_x += e->win_x * 0.00005 / e->zoom : 0;
 	(key == 0 && e->type == 5 && e->n - 0.1 > 1) ? e->n -= 0.1 : 0;
 	(key == 1 && e->type == 5 && e->n + 0.1 < 2) ? e->n += 0.1 : 0;
-	(key == 35 && e->type == 6) ? e->p += 0.1 : 0;
-	(key == 31 && e->type == 6) ? e->p -= 0.1 : 0;
+	(key == 35 && e->type == 6) ? e->p += 0.001 : 0;
+	(key == 31 && e->type == 6) ? e->p -= 0.001 : 0;
 	key == 15 ? fractol_reset(e) : 0;
 	fractol_key_type_color(key, e);
 	fractol_draw(e);

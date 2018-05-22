@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 14:29:56 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/05/22 14:51:36 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/05/22 15:21:40 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,10 @@ void	*julia(void *t)
 
 void	fractol_draw_phoenix_s(t_env *e, t_inf *m, int *i)
 {
-	int		i_tmp;
 	t_inf	m_tmp;
 
-	(*i != 0 || *i != 1) ? fractol_setup(e, m, i) : 0;
-	i_tmp = *i - 1;
-	(i_tmp != -1) ? fractol_setup(e, &m_tmp, &i_tmp) : 0;
+	fractol_setup(e, m, i);
+	fractol_setup(e, &m_tmp, i);
 	while ((m->zx * m->zx + m->zy * m->zy) < 4 && *i < e->m_i)
 	{
 		m->xtmp = m->zx * m->zx - m->zy * m->zy;

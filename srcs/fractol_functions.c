@@ -6,7 +6,7 @@
 /*   By: mhwangbo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/21 14:29:30 by mhwangbo          #+#    #+#             */
-/*   Updated: 2018/05/22 14:50:11 by mhwangbo         ###   ########.fr       */
+/*   Updated: 2018/05/22 15:22:28 by mhwangbo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 void	fractol_win_message_s(t_env *e)
 {
-	(e->type == 5) ? 
-		mlx_string_put(STR_P, 15, 165, 0xFFFFFF, "[A]/[S] : Change n"): 0;
+	(e->type == 5) ?
+		mlx_string_put(STR_P, 15, 165, 0xFFFFFF, "[A]/[S] : Change n") : 0;
+	(e->type == 6) ?
+		mlx_string_put(STR_P, 15, 165, 0xFFFFFF, "[P]/[O] : Change n") : 0;
 	mlx_string_put(STR_P, 15, 145, 0xFFFFFF, "[R] : Reset");
 	mlx_string_put(STR_P, e->win_x - 110, e->win_y - 85, 0xFFFFFF,
 			"MOUSE GUIDE");
@@ -24,7 +26,7 @@ void	fractol_win_message_s(t_env *e)
 			"[SCROLL] : zoom");
 	(e->type == 1 || e->type > 4) ? mlx_string_put(STR_P,
 		e->win_x - 220, e->win_y - 45, 0xFFFFFF, "[LEFT CLICK] : freeze") : 0;
-
+}
 
 void	fractol_win_message(t_env *e, int key)
 {
